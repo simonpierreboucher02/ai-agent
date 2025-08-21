@@ -1,0 +1,14 @@
+[
+  {
+    "role": "user",
+    "content": "hi sir who are you",
+    "timestamp": "2025-08-21T04:04:16.352348",
+    "metadata": {}
+  },
+  {
+    "role": "assistant",
+    "content": "Hello! I’m ChatGPT, an AI language model created by OpenAI. I can help with answering questions, writing, brainstorming, explaining concepts, and more. How can I assist you today?",
+    "timestamp": "2025-08-21T04:04:17.744496",
+    "metadata": {}
+  }
+]

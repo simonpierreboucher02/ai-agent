@@ -1,0 +1,20 @@
+[
+  {
+    "role": "user",
+    "content": "allo",
+    "timestamp": "2025-08-21T04:02:24.512723",
+    "metadata": {}
+  },
+  {
+    "role": "assistant",
+    "content": "Allo! Comment puis-je vous aider aujourd’hui ?",
+    "timestamp": "2025-08-21T04:02:27.757501",
+    "metadata": {}
+  },
+  {
+    "role": "user",
+    "content": "give me a python code for snake game sir",
+    "timestamp": "2025-08-21T04:02:36.656513",
+    "metadata": {}
+  }
+]

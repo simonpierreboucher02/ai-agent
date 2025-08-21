@@ -1,0 +1,51 @@
+2025-08-21 04:24:46,737 - AnthropicClaudeAgent_claude-sonnet-4-beta-1m - INFO - Clé API sauvegardée pour l'utilisateur (longueur: 108)
+2025-08-21 04:24:46,737 - AnthropicClaudeAgent_claude-sonnet-4-beta-1m - INFO - Initialized Anthropic Claude Chat Agent: claude-sonnet-4-beta-1m
+2025-08-21 04:24:48,389 - AnthropicClaudeAgent_claude-sonnet-4-beta-1m - INFO - Making API call to https://api.anthropic.com/v1/messages
+2025-08-21 04:24:48,389 - AnthropicClaudeAgent_claude-sonnet-4-beta-1m - INFO - Payload structure: {
+  "model": "claude-sonnet-4-20250514",
+  "max_tokens": 64000,
+  "temperature": 1.0,
+  "messages": "[2 messages]",
+  "system": "You are an agent.",
+  "stream": true
+}
+2025-08-21 04:24:48,389 - AnthropicClaudeAgent_claude-sonnet-4-beta-1m - INFO - Using timeout of 600s for Claude Sonnet 4
+2025-08-21 04:24:48,389 - AnthropicClaudeAgent_claude-sonnet-4-beta-1m - INFO - Making API request (attempt 1/3) with 600s timeout...
+2025-08-21 04:24:49,810 - AnthropicClaudeAgent_claude-sonnet-4-beta-1m - INFO - API request successful
+2025-08-21 04:25:02,037 - AnthropicClaudeAgent_claude-sonnet-4-beta-1m - INFO - Making API call to https://api.anthropic.com/v1/messages
+2025-08-21 04:25:02,037 - AnthropicClaudeAgent_claude-sonnet-4-beta-1m - INFO - Payload structure: {
+  "model": "claude-sonnet-4-20250514",
+  "max_tokens": 64000,
+  "temperature": 1.0,
+  "messages": "[4 messages]",
+  "system": "You are an agent.",
+  "stream": true
+}
+2025-08-21 04:25:02,038 - AnthropicClaudeAgent_claude-sonnet-4-beta-1m - INFO - Using timeout of 600s for Claude Sonnet 4
+2025-08-21 04:25:02,038 - AnthropicClaudeAgent_claude-sonnet-4-beta-1m - INFO - Making API request (attempt 1/3) with 600s timeout...
+2025-08-21 04:25:05,270 - AnthropicClaudeAgent_claude-sonnet-4-beta-1m - INFO - API request successful
+2025-08-21 04:25:42,803 - AnthropicClaudeAgent_claude-sonnet-4-beta-1m - INFO - Making API call to https://api.anthropic.com/v1/messages
+2025-08-21 04:25:42,804 - AnthropicClaudeAgent_claude-sonnet-4-beta-1m - INFO - Payload structure: {
+  "model": "claude-sonnet-4-20250514",
+  "max_tokens": 64000,
+  "temperature": 1.0,
+  "messages": "[6 messages]",
+  "system": "You are an agent.",
+  "stream": true
+}
+2025-08-21 04:25:42,804 - AnthropicClaudeAgent_claude-sonnet-4-beta-1m - INFO - Using timeout of 600s for Claude Sonnet 4
+2025-08-21 04:25:42,804 - AnthropicClaudeAgent_claude-sonnet-4-beta-1m - INFO - Making API request (attempt 1/3) with 600s timeout...
+2025-08-21 04:25:44,592 - AnthropicClaudeAgent_claude-sonnet-4-beta-1m - INFO - API request successful
+2025-08-21 04:26:29,665 - AnthropicClaudeAgent_claude-sonnet-4-beta-1m - INFO - Making API call to https://api.anthropic.com/v1/messages
+2025-08-21 04:26:29,666 - AnthropicClaudeAgent_claude-sonnet-4-beta-1m - INFO - Payload structure: {
+  "model": "claude-sonnet-4-20250514",
+  "max_tokens": 64000,
+  "temperature": 1.0,
+  "messages": "[8 messages]",
+  "system": "You are an agent.",
+  "stream": true
+}
+2025-08-21 04:26:29,666 - AnthropicClaudeAgent_claude-sonnet-4-beta-1m - INFO - Using timeout of 600s for Claude Sonnet 4
+2025-08-21 04:26:29,666 - AnthropicClaudeAgent_claude-sonnet-4-beta-1m - INFO - Making API request (attempt 1/3) with 600s timeout...
+2025-08-21 04:26:31,390 - AnthropicClaudeAgent_claude-sonnet-4-beta-1m - INFO - API request successful
+2025-08-21 04:26:42,231 - AnthropicClaudeAgent_claude-sonnet-4-beta-1m - INFO - Exported conversation to agents/claude-sonnet-4-beta-1m/exports/conversation_20250821_042642.html

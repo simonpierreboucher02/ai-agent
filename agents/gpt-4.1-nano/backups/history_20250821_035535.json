@@ -1,0 +1,20 @@
+[
+  {
+    "role": "user",
+    "content": "hi mister who are you",
+    "timestamp": "2025-08-21T03:55:10.672801",
+    "metadata": {}
+  },
+  {
+    "role": "assistant",
+    "content": "Hello! I'm an AI language model here to help you. How can I assist you today?",
+    "timestamp": "2025-08-21T03:55:11.447430",
+    "metadata": {}
+  },
+  {
+    "role": "user",
+    "content": "give me a python code for snake game",
+    "timestamp": "2025-08-21T03:55:24.386089",
+    "metadata": {}
+  }
+]

@@ -1,0 +1,19 @@
+2025-08-21 03:55:00,827 - OpenAIGPT41NanoAgent_gpt-4.1-nano - INFO - Clé API sauvegardée pour l'utilisateur (longueur : 164)
+2025-08-21 03:55:00,827 - OpenAIGPT41NanoAgent_gpt-4.1-nano - INFO - Initialisé l'Agent de Chat OpenAI GPT-4.1 Nano : gpt-4.1-nano
+2025-08-21 03:55:10,684 - OpenAIGPT41NanoAgent_gpt-4.1-nano - INFO - Appel de l'API à https://api.openai.com/v1/chat/completions
+2025-08-21 03:55:10,684 - OpenAIGPT41NanoAgent_gpt-4.1-nano - INFO - Utilisation d'un timeout de 120s pour GPT-4.1 Nano
+2025-08-21 03:55:10,685 - OpenAIGPT41NanoAgent_gpt-4.1-nano - INFO - Envoi de la requête API (tentative 1/3) avec un timeout de 120s...
+2025-08-21 03:55:11,222 - OpenAIGPT41NanoAgent_gpt-4.1-nano - INFO - Requête API réussie
+2025-08-21 03:55:24,411 - OpenAIGPT41NanoAgent_gpt-4.1-nano - INFO - Appel de l'API à https://api.openai.com/v1/chat/completions
+2025-08-21 03:55:24,412 - OpenAIGPT41NanoAgent_gpt-4.1-nano - INFO - Utilisation d'un timeout de 120s pour GPT-4.1 Nano
+2025-08-21 03:55:24,412 - OpenAIGPT41NanoAgent_gpt-4.1-nano - INFO - Envoi de la requête API (tentative 1/3) avec un timeout de 120s...
+2025-08-21 03:55:24,839 - OpenAIGPT41NanoAgent_gpt-4.1-nano - INFO - Requête API réussie
+2025-08-21 03:55:42,892 - OpenAIGPT41NanoAgent_gpt-4.1-nano - INFO - Appel de l'API à https://api.openai.com/v1/chat/completions
+2025-08-21 03:55:42,892 - OpenAIGPT41NanoAgent_gpt-4.1-nano - INFO - Utilisation d'un timeout de 120s pour GPT-4.1 Nano
+2025-08-21 03:55:42,893 - OpenAIGPT41NanoAgent_gpt-4.1-nano - INFO - Envoi de la requête API (tentative 1/3) avec un timeout de 120s...
+2025-08-21 03:55:43,478 - OpenAIGPT41NanoAgent_gpt-4.1-nano - INFO - Requête API réussie
+2025-08-21 03:56:12,941 - OpenAIGPT41NanoAgent_gpt-4.1-nano - INFO - Appel de l'API à https://api.openai.com/v1/chat/completions
+2025-08-21 03:56:12,942 - OpenAIGPT41NanoAgent_gpt-4.1-nano - INFO - Utilisation d'un timeout de 120s pour GPT-4.1 Nano
+2025-08-21 03:56:12,942 - OpenAIGPT41NanoAgent_gpt-4.1-nano - INFO - Envoi de la requête API (tentative 1/3) avec un timeout de 120s...
+2025-08-21 03:56:13,276 - OpenAIGPT41NanoAgent_gpt-4.1-nano - INFO - Requête API réussie
+2025-08-21 03:56:54,416 - OpenAIGPT41NanoAgent_gpt-4.1-nano - INFO - Conversation exportée vers agents/gpt-4.1-nano/exports/conversation_20250821_035654.html

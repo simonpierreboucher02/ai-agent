@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anthropic Claude Sonnet 4 Conversation - claude-sonnet-4-beta-1m</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #f1f5f9;
+            --text-color: #1e293b;
+            --border-color: #e2e8f0;
+            --user-bg: #3b82f6;
+            --assistant-bg: #10b981;
+            --code-bg: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 4xl;
+            margin: 0 auto;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+        }
+
+        .header {
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .stats {
+            background: var(--secondary-color);
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 0.25rem;
+        }
+
+        .messages {
+            padding: 2rem;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .message.user {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .message.user .message-avatar {
+            background: var(--user-bg);
+        }
+
+        .message.assistant .message-avatar {
+            background: var(--assistant-bg);
+        }
+
+        .message-content {
+            flex: 1;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .message.user .message-content {
+            background: #eff6ff;
+            border-color: var(--user-bg);
+        }
+
+        .message.assistant .message-content {
+            background: #f0fdf4;
+            border-color: var(--assistant-bg);
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .message-role {
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+
+        .message-time {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        .message-text {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .code-block {
+            background: var(--code-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            background: var(--secondary-color);
+            padding: 1rem 2rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #64748b;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .header {
+                padding: 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header-info {
+                grid-template-columns: 1fr;
+            }
+
+            .messages {
+                padding: 1rem;
+            }
+
+            .message-content {
+                padding: 1rem;
+            }  
+        }  
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Anthropic Claude Sonnet 4 Chat Agent</h1>
+            <p>Conversation Export</p>
+            <div class="header-info">
+                <div><strong>Agent ID:</strong> claude-sonnet-4-beta-1m</div>
+                <div><strong>Model:</strong> claude-sonnet-4-20250514</div>
+                <div><strong>Exported:</strong> 2025-08-21 04:26:42</div>
+                <div><strong>Temperature:</strong> 1.0</div>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">8</div>
+                    <div class="stat-label">Total Messages</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">4</div>
+                    <div class="stat-label">User Messages</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">4</div>
+                    <div class="stat-label">Assistant Messages</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">17,862</div>
+                    <div class="stat-label">Total Characters</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">2,232</div>
+                    <div class="stat-label">Avg Message Length</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">0:01:44</div>
+                    <div class="stat-label">Duration</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="messages">
+
+        <div class="message user">
+            <div class="message-avatar">U</div>
+            <div class="message-content">
+                <div class="message-header">
+                    <span class="message-role">user</span>
+                    <span class="message-time">2025-08-21 04:24:48</span>
+                </div>
+                <div class="message-text">hi</div>
+            </div>
+        </div>
+        <div class="message assistant">
+            <div class="message-avatar">AI</div>
+            <div class="message-content">
+                <div class="message-header">
+                    <span class="message-role">assistant</span>
+                    <span class="message-time">2025-08-21 04:24:49</span>
+                </div>
+                <div class="message-text">Hello! How can I help you today?</div>
+            </div>
+        </div>
+        <div class="message user">
+            <div class="message-avatar">U</div>
+            <div class="message-content">
+                <div class="message-header">
+                    <span class="message-role">user</span>
+                    <span class="message-time">2025-08-21 04:25:02</span>
+                </div>
+                <div class="message-text">àgive me python code for snake gameè</div>
+            </div>
+        </div>
+        <div class="message assistant">
+            <div class="message-avatar">AI</div>
+            <div class="message-content">
+                <div class="message-header">
+                    <span class="message-role">assistant</span>
+                    <span class="message-time">2025-08-21 04:25:27</span>
+                </div>
+                <div class="message-text">Here&#x27;s a complete Python Snake game using pygame:
+
+<div class="code-block">python
+import pygame
+import random
+import sys
+
+# Initialize Pygame
+pygame.init()
+
+# Constants
+WINDOW_WIDTH = 800
+WINDOW_HEIGHT = 600
+GRID_SIZE = 20
+GRID_WIDTH = WINDOW_WIDTH // GRID_SIZE
+GRID_HEIGHT = WINDOW_HEIGHT // GRID_SIZE
+
+# Colors
+BLACK = (0, 0, 0)
+GREEN = (0, 255, 0)
+RED = (255, 0, 0)
+WHITE = (255, 255, 255)
+DARK_GREEN = (0, 128, 0)
+
+# Directions
+UP = (0, -1)
+DOWN = (0, 1)
+LEFT = (-1, 0)
+RIGHT = (1, 0)
+
+class Snake:
+    def __init__(self):
+        self.positions = [(GRID_WIDTH // 2, GRID_HEIGHT // 2)]
+        self.direction = RIGHT
+        self.grow = False
+        
+    def move(self):
+        head = self.positions[0]
+        new_head = (head[0] + self.direction[0], head[1] + self.direction[1])
+        
+        # Check wall collision
+        if (new_head[0] &lt; 0 or new_head[0] &gt;= GRID_WIDTH or 
+            new_head[1] &lt; 0 or new_head[1] &gt;= GRID_HEIGHT):
+            return False
+            
+        # Check self collision
+        if new_head in self.positions:
+            return False
+            
+        self.positions.insert(0, new_head)
+        
+        if not self.grow:
+            self.positions.pop()
+        else:
+            self.grow = False
+            
+        return True
+    
+    def change_direction(self, new_direction):
+        # Prevent moving in opposite direction
+        if (self.direction[0] * -1, self.direction[1] * -1) != new_direction:
+            self.direction = new_direction
+    
+    def grow_snake(self):
+        self.grow = True
+    
+    def draw(self, screen):
+        for i, position in enumerate(self.positions):
+            rect = pygame.Rect(position[0] * GRID_SIZE, position[1] * GRID_SIZE, 
+                             GRID_SIZE, GRID_SIZE)
+            # Draw head in different color
+            color = DARK_GREEN if i == 0 else GREEN
+            pygame.draw.rect(screen, color, rect)
+            pygame.draw.rect(screen, WHITE, rect, 1)
+
+class Food:
+    def __init__(self):
+        self.position = (0, 0)
+        self.spawn()
+    
+    def spawn(self):
+        self.position = (random.randint(0, GRID_WIDTH - 1), 
+                        random.randint(0, GRID_HEIGHT - 1))
+    
+    def draw(self, screen):
+        rect = pygame.Rect(self.position[0] * GRID_SIZE, self.position[1] * GRID_SIZE,
+                          GRID_SIZE, GRID_SIZE)
+        pygame.draw.rect(screen, RED, rect)
+        pygame.draw.rect(screen, WHITE, rect, 1)
+
+class Game:
+    def __init__(self):
+        self.screen = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+        pygame.display.set_caption(&quot;Snake Game&quot;)
+        self.clock = pygame.time.Clock()
+        self.snake = Snake()
+        self.food = Food()
+        self.score = 0
+        self.font = pygame.font.Font(None, 36)
+        
+    def handle_events(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_UP:
+                    self.snake.change_direction(UP)
+                elif event.key == pygame.K_DOWN:
+                    self.snake.change_direction(DOWN)
+                elif event.key == pygame.K_LEFT:
+                    self.snake.change_direction(LEFT)
+                elif event.key == pygame.K_RIGHT:
+                    self.snake.change_direction(RIGHT)
+                elif event.key == pygame.K_ESCAPE:
+                    return False
+        return True
+    
+    def update(self):
+        if not self.snake.move():
+            return False
+        
+        # Check if snake ate food
+        if self.snake.positions[0] == self.food.position:
+            self.snake.grow_snake()
+            self.score += 10
+            # Respawn food (make sure it&#x27;s not on snake)
+            while self.food.position in self.snake.positions:
+                self.food.spawn()
+                
+        return True
+    
+    def draw(self):
+        self.screen.fill(BLACK)
+        self.snake.draw(self.screen)
+        self.food.draw(self.screen)
+        
+        # Draw score
+        score_text = self.font.render(f&quot;Score: {self.score}&quot;, True, WHITE)
+        self.screen.blit(score_text, (10, 10))
+        
+        pygame.display.flip()
+    
+    def game_over_screen(self):
+        overlay = pygame.Surface((WINDOW_WIDTH, WINDOW_HEIGHT))
+        overlay.set_alpha(128)
+        overlay.fill(BLACK)
+        self.screen.blit(overlay, (0, 0))
+        
+        game_over_text = self.font.render(&quot;GAME OVER&quot;, True, RED)
+        score_text = self.font.render(f&quot;Final Score: {self.score}&quot;, True, WHITE)
+        restart_text = self.font.render(&quot;Press SPACE to restart or ESC to quit&quot;, True, WHITE)
+        
+        # Center the text
+        game_over_rect = game_over_text.get_rect(center=(WINDOW_WIDTH//2, WINDOW_HEIGHT//2 - 50))
+        score_rect = score_text.get_rect(center=(WINDOW_WIDTH//2, WINDOW_HEIGHT//2))
+        restart_rect = restart_text.get_rect(center=(WINDOW_WIDTH//2, WINDOW_HEIGHT//2 + 50))
+        
+        self.screen.blit(game_over_text, game_over_rect)
+        self.screen.blit(score_text, score_rect)
+        self.screen.blit(restart_text, restart_rect)
+        
+        pygame.display.flip()
+    
+    def reset_game(self):
+        self.snake = Snake()
+        self.food = Food()
+        self.score = 0
+    
+    def run(self):
+        running = True
+        game_active = True
+        
+        while running:
+            if game_active:
+                # Handle events
+                if not self.handle_events():
+                    running = False
+                    continue
+                
+                # Update game
+                if not self.update():
+                    game_active = False
+                
+                # Draw everything
+                self.draw()
+                
+                # Control game speed
+                self.clock.tick(10)  # 10 FPS
+                
+            else:
+                # Game over screen
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        running = False
+                    elif event.type == pygame.KEYDOWN:
+                        if event.key == pygame.K_SPACE:
+                            self.reset_game()
+                            game_active = True
+                        elif event.key == pygame.K_ESCAPE:
+                            running = False
+                
+                self.game_over_screen()
+        
+        pygame.quit()
+        sys.exit()
+
+# Run the game
+if __name__ == &quot;__main__&quot;:
+    game = Game()
+    game.run()
+</div>
+
+## How to run:
+
+1. **Install pygame** (if you haven&#x27;t already):
+   <div class="code-block">bash
+   pip install pygame
+   </div>
+
+2. **Save the code** to a file (e.g., `snake_game.py`)
+
+3. **Run the game**:
+   <div class="code-block">bash
+   python snake_game.py
+   </div>
+
+## Game Controls:
+- **Arrow Keys**: Move the snake (Up, Down, Left, Right)
+- **ESC**: Quit the game
+- **SPACE**: Restart after game over
+
+## Features:
+- Classic snake gameplay
+- Score tracking
+- Collision detection (walls and self)
+- Game over screen with restart option
+- Smooth movement and controls
+- Visual feedback with different colors for head and body
+
+The snake grows each time it eats the red food, and the game ends if the snake hits the walls or itself. Have fun playing! 🐍</div>
+            </div>
+        </div>
+        <div class="message user">
+            <div class="message-avatar">U</div>
+            <div class="message-content">
+                <div class="message-header">
+                    <span class="message-role">user</span>
+                    <span class="message-time">2025-08-21 04:25:42</span>
+                </div>
+                <div class="message-text">convert it to r langage</div>
+            </div>
+        </div>
+        <div class="message assistant">
+            <div class="message-avatar">AI</div>
+            <div class="message-content">
+                <div class="message-header">
+                    <span class="message-role">assistant</span>
+                    <span class="message-time">2025-08-21 04:26:26</span>
+                </div>
+                <div class="message-text">Here&#x27;s a Snake game implemented in R using the `graphics` package:
+
+<div class="code-block">r
+# Snake Game in R
+# Install required packages if not already installed
+if (!require(graphics)) install.packages(&quot;graphics&quot;)
+
+library(graphics)
+
+# Game constants
+GRID_WIDTH &lt;- 40
+GRID_HEIGHT &lt;- 30
+CELL_SIZE &lt;- 15
+WINDOW_WIDTH &lt;- GRID_WIDTH * CELL_SIZE
+WINDOW_HEIGHT &lt;- GRID_HEIGHT * CELL_SIZE
+
+# Direction vectors
+directions &lt;- list(
+  UP = c(0, -1),
+  DOWN = c(0, 1),
+  LEFT = c(-1, 0),
+  RIGHT = c(1, 0)
+)
+
+# Snake Game Class (using environment to simulate OOP)
+SnakeGame &lt;- function() {
+  # Game state variables
+  snake_positions &lt;- list(c(GRID_WIDTH %/% 2, GRID_HEIGHT %/% 2))
+  current_direction &lt;- directions$RIGHT
+  food_position &lt;- c(sample(1:GRID_WIDTH, 1), sample(1:GRID_HEIGHT, 1))
+  score &lt;- 0
+  game_over &lt;- FALSE
+  grow_snake &lt;- FALSE
+  
+  # Initialize graphics window
+  init_graphics &lt;- function() {
+    # Create a new plot window
+    dev.new(width = WINDOW_WIDTH/50, height = WINDOW_HEIGHT/50)
+    par(mar = c(0, 0, 2, 0), bg = &quot;black&quot;)
+    plot.new()
+    plot.window(xlim = c(0, GRID_WIDTH), ylim = c(0, GRID_HEIGHT))
+    title(paste(&quot;Snake Game - Score:&quot;, score), col.main = &quot;white&quot;)
+  }
+  
+  # Draw the game
+  draw_game &lt;- function() {
+    # Clear the plot
+    plot.new()
+    plot.window(xlim = c(0, GRID_WIDTH), ylim = c(0, GRID_HEIGHT))
+    
+    # Draw snake
+    for (i in seq_along(snake_positions)) {
+      pos &lt;- snake_positions[[i]]
+      color &lt;- if (i == 1) &quot;darkgreen&quot; else &quot;green&quot;  # Head is darker
+      rect(pos[1] - 0.4, pos[2] - 0.4, pos[1] + 0.4, pos[2] + 0.4, 
+           col = color, border = &quot;white&quot;)
+    }
+    
+    # Draw food
+    rect(food_position[1] - 0.4, food_position[2] - 0.4, 
+         food_position[1] + 0.4, food_position[2] + 0.4, 
+         col = &quot;red&quot;, border = &quot;white&quot;)
+    
+    # Update title with score
+    title(paste(&quot;Snake Game - Score:&quot;, score), col.main = &quot;white&quot;)
+  }
+  
+  # Move snake
+  move_snake &lt;- function() {
+    if (game_over) return(FALSE)
+    
+    # Get current head position
+    head &lt;- snake_positions[[1]]
+    new_head &lt;- c(head[1] + current_direction[1], head[2] + current_direction[2])
+    
+    # Check wall collision
+    if (new_head[1] &lt; 1 || new_head[1] &gt; GRID_WIDTH || 
+        new_head[2] &lt; 1 || new_head[2] &gt; GRID_HEIGHT) {
+      game_over &lt;&lt;- TRUE
+      return(FALSE)
+    }
+    
+    # Check self collision
+    for (segment in snake_positions) {
+      if (all(new_head == segment)) {
+        game_over &lt;&lt;- TRUE
+        return(FALSE)
+      }
+    }
+    
+    # Add new head
+    snake_positions &lt;&lt;- c(list(new_head), snake_positions)
+    
+    # Check if food eaten
+    if (all(new_head == food_position)) {
+      score &lt;&lt;- score + 10
+      grow_snake &lt;&lt;- TRUE
+      # Generate new food position (not on snake)
+      repeat {
+        food_position &lt;&lt;- c(sample(1:GRID_WIDTH, 1), sample(1:GRID_HEIGHT, 1))
+        on_snake &lt;- FALSE
+        for (segment in snake_positions) {
+          if (all(food_position == segment)) {
+            on_snake &lt;- TRUE
+            break
+          }
+        }
+        if (!on_snake) break
+      }
+    }
+    
+    # Remove tail if not growing
+    if (!grow_snake) {
+      snake_positions &lt;&lt;- snake_positions[-length(snake_positions)]
+    } else {
+      grow_snake &lt;&lt;- FALSE
+    }
+    
+    return(TRUE)
+  }
+  
+  # Change direction
+  change_direction &lt;- function(new_direction) {
+    # Prevent moving in opposite direction
+    opposite &lt;- c(-current_direction[1], -current_direction[2])
+    if (!all(new_direction == opposite)) {
+      current_direction &lt;&lt;- new_direction
+    }
+  }
+  
+  # Get key input (simplified)
+  get_input &lt;- function() {
+    # This is a simplified input system for R
+    # In a real implementation, you&#x27;d need more sophisticated input handling
+    cat(&quot;Use WASD keys: W(up), S(down), A(left), D(right), Q(quit)\n&quot;)
+    cat(&quot;Current score:&quot;, score, &quot;\n&quot;)
+    
+    if (game_over) {
+      cat(&quot;GAME OVER! Final Score:&quot;, score, &quot;\n&quot;)
+      cat(&quot;Press R to restart or Q to quit: &quot;)
+      input &lt;- toupper(readline())
+      if (input == &quot;R&quot;) {
+        restart_game()
+        return(&quot;RESTART&quot;)
+      } else {
+        return(&quot;QUIT&quot;)
+      }
+    }
+    
+    cat(&quot;Enter move: &quot;)
+    input &lt;- toupper(readline())
+    
+    switch(input,
+           &quot;W&quot; = change_direction(directions$UP),
+           &quot;S&quot; = change_direction(directions$DOWN),
+           &quot;A&quot; = change_direction(directions$LEFT),
+           &quot;D&quot; = change_direction(directions$RIGHT),
+           &quot;Q&quot; = return(&quot;QUIT&quot;),
+           NULL
+    )
+    return(&quot;CONTINUE&quot;)
+  }
+  
+  # Restart game
+  restart_game &lt;- function() {
+    snake_positions &lt;&lt;- list(c(GRID_WIDTH %/% 2, GRID_HEIGHT %/% 2))
+    current_direction &lt;&lt;- directions$RIGHT
+    food_position &lt;&lt;- c(sample(1:GRID_WIDTH, 1), sample(1:GRID_HEIGHT, 1))
+    score &lt;&lt;- 0
+    game_over &lt;&lt;- FALSE
+    grow_snake &lt;&lt;- FALSE
+  }
+  
+  # Main game loop
+  run_game &lt;- function() {
+    init_graphics()
+    
+    cat(&quot;=== SNAKE GAME IN R ===\n&quot;)
+    cat(&quot;Controls: W(up), S(down), A(left), D(right), Q(quit)\n&quot;)
+    cat(&quot;Press Enter after each move\n\n&quot;)
+    
+    while (TRUE) {
+      draw_game()
+      
+      input_result &lt;- get_input()
+      
+      if (input_result == &quot;QUIT&quot;) {
+        break
+      } else if (input_result == &quot;RESTART&quot;) {
+        next
+      }
+      
+      if (!move_snake()) {
+        draw_game()  # Draw final state
+      }
+      
+      # Small delay
+      Sys.sleep(0.1)
+    }
+    
+    dev.off()  # Close graphics window
+    cat(&quot;Thanks for playing!\n&quot;)
+  }
+  
+  # Return the main function
+  return(run_game)
+}
+
+# Alternative version with automatic movement (more game-like)
+SnakeGameAuto &lt;- function() {
+  snake_positions &lt;- list(c(GRID_WIDTH %/% 2, GRID_HEIGHT %/% 2))
+  current_direction &lt;- directions$RIGHT
+  food_position &lt;- c(sample(1:GRID_WIDTH, 1), sample(1:GRID_HEIGHT, 1))
+  score &lt;- 0
+  game_over &lt;- FALSE
+  grow_snake &lt;- FALSE
+  
+  init_graphics &lt;- function() {
+    dev.new(width = 8, height = 6)
+    par(mar = c(1, 1, 2, 1), bg = &quot;black&quot;)
+  }
+  
+  draw_game &lt;- function() {
+    plot.new()
+    plot.window(xlim = c(0, GRID_WIDTH), ylim = c(0, GRID_HEIGHT))
+    
+    # Draw snake
+    for (i in seq_along(snake_positions)) {
+      pos &lt;- snake_positions[[i]]
+      color &lt;- if (i == 1) &quot;darkgreen&quot; else &quot;green&quot;
+      rect(pos[1] - 0.4, pos[2] - 0.4, pos[1] + 0.4, pos[2] + 0.4, 
+           col = color, border = &quot;white&quot;)
+    }
+    
+    # Draw food
+    rect(food_position[1] - 0.4, food_position[2] - 0.4, 
+         food_position[1] + 0.4, food_position[2] + 0.4, 
+         col = &quot;red&quot;, border = &quot;white&quot;)
+    
+    title(paste(&quot;Snake Game - Score:&quot;, score, &quot;- Use arrow keys&quot;), col.main = &quot;white&quot;)
+  }
+  
+  move_snake &lt;- function() {
+    if (game_over) return(FALSE)
+    
+    head &lt;- snake_positions[[1]]
+    new_head &lt;- c(head[1] + current_direction[1], head[2] + current_direction[2])
+    
+    # Check collisions
+    if (new_head[1] &lt; 1 || new_head[1] &gt; GRID_WIDTH || 
+        new_head[2] &lt; 1 || new_head[2] &gt; GRID_HEIGHT) {
+      game_over &lt;&lt;- TRUE
+      return(FALSE)
+    }
+    
+    for (segment in snake_positions) {
+      if (all(new_head == segment)) {
+        game_over &lt;&lt;- TRUE
+        return(FALSE)
+      }
+    }
+    
+    snake_positions &lt;&lt;- c(list(new_head), snake_positions)
+    
+    if (all(new_head == food_position)) {
+      score &lt;&lt;- score + 10
+      grow_snake &lt;&lt;- TRUE
+      repeat {
+        food_position &lt;&lt;- c(sample(1:GRID_WIDTH, 1), sample(1:GRID_HEIGHT, 1))
+        on_snake &lt;- FALSE
+        for (segment in snake_positions) {
+          if (all(food_position == segment)) {
+            on_snake &lt;- TRUE
+            break
+          }
+        }
+        if (!on_snake) break
+      }
+    }
+    
+    if (!grow_snake) {
+      snake_positions &lt;&lt;- snake_positions[-length(snake_positions)]
+    } else {
+      grow_snake &lt;&lt;- FALSE
+    }
+    
+    return(TRUE)
+  }
+  
+  run_auto_game &lt;- function() {
+    init_graphics()
+    
+    cat(&quot;=== AUTO SNAKE GAME ===\n&quot;)
+    cat(&quot;The snake moves automatically. Watch it go!\n&quot;)
+    cat(&quot;Close the graphics window to stop.\n\n&quot;)
+    
+    while (TRUE) {
+      # Check if graphics device is still open
+      if (dev.cur() == 1) break
+      
+      draw_game()
+      
+      if (!move_snake()) {
+        cat(&quot;Game Over! Final Score:&quot;, score, &quot;\n&quot;)
+        Sys.sleep(2)
+        break
+      }
+      
+      # Random direction changes for demo
+      if (runif(1) &lt; 0.1) {  # 10% chance to change direction
+        new_dir &lt;- sample(directions, 1)[[1]]
+        opposite &lt;- c(-current_direction[1], -current_direction[2])
+        if (!all(new_dir == opposite)) {
+          current_direction &lt;&lt;- new_dir
+        }
+      }
+      
+      Sys.sleep(0.3)  # Game speed
+    }
+  }
+  
+  return(run_auto_game)
+}
+
+# Run the game
+cat(&quot;Choose game mode:\n&quot;)
+cat(&quot;1. Manual control (enter moves)\n&quot;)
+cat(&quot;2. Auto-play demo\n&quot;)
+choice &lt;- readline(&quot;Enter choice (1 or 2): &quot;)
+
+if (choice == &quot;1&quot;) {
+  game &lt;- SnakeGame()
+  game()
+} else {
+  game &lt;- SnakeGameAuto()
+  game()
+}
+</div>
+
+## How to run:
+
+1. **Save the code** to a file (e.g., `snake_game.R`)
+
+2. **Run in R**:
+   <div class="code-block">r
+   source(&quot;snake_game.R&quot;)
+   </div>
+
+## Features:
+
+### Manual Control Version:
+- **W**: Move up
+- **S**: Move down  
+- **A**: Move left
+- **D**: Move right
+- **Q**: Quit game
+- **R**: Restart after game over
+
+### Auto-play Demo Version:
+- Snake moves automatically
+- Random direction changes
+- Just watch it play!
+
+## Key Differences from Python Version:
+
+1. **Input System**: R doesn&#x27;t have real-time key input like pygame, so the manual version uses `readline()` for turn-based input
+2. **Graphics**: Uses R&#x27;s built-in `graphics` package instead of pygame
+3. **Game Loop**: Simplified compared to pygame&#x27;s event-driven system
+4. **Environment Variables**: Uses `&lt;&lt;-` operator to modify variables in parent scope (simulating object-oriented behavior)
+
+## Limitations:
+
+- **Input**: No real-time keyboard input (manual version is turn-based)
+- **Graphics**: Less sophisticated than pygame
+- **Performance**: Slower than compiled languages
+- **Sound**: No audio capabilities
+
+The auto-play version provides a better &quot;game-like&quot; experience since it moves continuously, while the manual version lets you control the snake step-by-step. Both versions include collision detection, scoring, and food spawning mechanics! 🐍</div>
+            </div>
+        </div>
+        <div class="message user">
+            <div class="message-avatar">U</div>
+            <div class="message-content">
+                <div class="message-header">
+                    <span class="message-role">user</span>
+                    <span class="message-time">2025-08-21 04:26:29</span>
+                </div>
+                <div class="message-text">thnaks</div>
+            </div>
+        </div>
+        <div class="message assistant">
+            <div class="message-avatar">AI</div>
+            <div class="message-content">
+                <div class="message-header">
+                    <span class="message-role">assistant</span>
+                    <span class="message-time">2025-08-21 04:26:32</span>
+                </div>
+                <div class="message-text">You&#x27;re welcome! 😊
+
+I&#x27;m glad I could help you with both the Python and R versions of the Snake game. Feel free to ask if you need any modifications to the code or have other programming questions!
+
+Happy coding! 🐍🎮</div>
+            </div>
+        </div>
+        </div>
+
+        <div class="footer">
+            Generated by Anthropic Claude Sonnet 4 Chat Agent • Agent ID: claude-sonnet-4-beta-1m • 2025-08-21 04:26:42
+        </div>
+    </div>
+</body>
+</html>
