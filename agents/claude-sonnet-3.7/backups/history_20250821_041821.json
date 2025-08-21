@@ -1,0 +1,14 @@
+[
+  {
+    "role": "user",
+    "content": "hi",
+    "timestamp": "2025-08-21T04:18:06.342002",
+    "metadata": {}
+  },
+  {
+    "role": "assistant",
+    "content": "Hello! How can I assist you today? Whether you're looking for information, advice, or just want to chat, I'm here to help. What's on your mind?",
+    "timestamp": "2025-08-21T04:18:09.544013",
+    "metadata": {}
+  }
+]
