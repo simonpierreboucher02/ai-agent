@@ -1,0 +1,22 @@
+2025-08-21 04:13:25,021 - OpenAIO3Agent_o3 - INFO - API key saved for user (length: 164)
+2025-08-21 04:13:25,021 - OpenAIO3Agent_o3 - INFO - Initialized OpenAI O3 Chat Agent: o3
+2025-08-21 04:13:36,341 - OpenAIO3Agent_o3 - INFO - Using API key from secrets file
+2025-08-21 04:13:36,342 - OpenAIO3Agent_o3 - INFO - Initialized OpenAI O3 Chat Agent: o3
+2025-08-21 04:13:38,095 - OpenAIO3Agent_o3 - INFO - Making API call to https://api.openai.com/v1/chat/completions
+2025-08-21 04:13:38,095 - OpenAIO3Agent_o3 - INFO - Using timeout of 240s for O3 with reasoning effort: low
+2025-08-21 04:13:38,095 - OpenAIO3Agent_o3 - INFO - Making API request to O3 (attempt 1/3) with 240s timeout...
+2025-08-21 04:13:39,398 - OpenAIO3Agent_o3 - INFO - API request successful
+2025-08-21 04:13:51,894 - OpenAIO3Agent_o3 - INFO - Making API call to https://api.openai.com/v1/chat/completions
+2025-08-21 04:13:51,894 - OpenAIO3Agent_o3 - INFO - Using timeout of 240s for O3 with reasoning effort: low
+2025-08-21 04:13:51,894 - OpenAIO3Agent_o3 - INFO - Making API request to O3 (attempt 1/3) with 240s timeout...
+2025-08-21 04:13:55,226 - OpenAIO3Agent_o3 - INFO - API request successful
+2025-08-21 04:14:15,568 - OpenAIO3Agent_o3 - INFO - Making API call to https://api.openai.com/v1/chat/completions
+2025-08-21 04:14:15,569 - OpenAIO3Agent_o3 - INFO - Using timeout of 240s for O3 with reasoning effort: low
+2025-08-21 04:14:15,569 - OpenAIO3Agent_o3 - INFO - Making API request to O3 (attempt 1/3) with 240s timeout...
+2025-08-21 04:14:19,390 - OpenAIO3Agent_o3 - INFO - API request successful
+2025-08-21 04:14:46,088 - OpenAIO3Agent_o3 - INFO - Making API call to https://api.openai.com/v1/chat/completions
+2025-08-21 04:14:46,089 - OpenAIO3Agent_o3 - INFO - Using timeout of 240s for O3 with reasoning effort: low
+2025-08-21 04:14:46,089 - OpenAIO3Agent_o3 - INFO - Making API request to O3 (attempt 1/3) with 240s timeout...
+2025-08-21 04:14:47,800 - OpenAIO3Agent_o3 - INFO - API request successful
+2025-08-21 04:14:52,635 - OpenAIO3Agent_o3 - INFO - Exported conversation to agents/o3/exports/conversation_20250821_041452.html
+2025-08-21 04:14:55,810 - OpenAIO3Agent_o3 - INFO - Exported conversation to agents/o3/exports/conversation_20250821_041455.md

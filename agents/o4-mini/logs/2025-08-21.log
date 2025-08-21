@@ -1,0 +1,22 @@
+2025-08-21 04:15:26,864 - OpenAIO4MiniAgent_o4-mini - INFO - API key saved for user (length: 164)
+2025-08-21 04:15:26,864 - OpenAIO4MiniAgent_o4-mini - INFO - Initialized OpenAI O4-Mini Chat Agent: o4-mini with model: o4-mini
+2025-08-21 04:16:12,291 - OpenAIO4MiniAgent_o4-mini - INFO - Using API key from secrets file
+2025-08-21 04:16:12,291 - OpenAIO4MiniAgent_o4-mini - INFO - Initialized OpenAI O4-Mini Chat Agent: o4-mini with model: o4-mini
+2025-08-21 04:16:16,581 - OpenAIO4MiniAgent_o4-mini - INFO - Making API call to https://api.openai.com/v1/chat/completions
+2025-08-21 04:16:16,582 - OpenAIO4MiniAgent_o4-mini - INFO - Using timeout of 90s for O4 Mini with reasoning effort: low
+2025-08-21 04:16:16,582 - OpenAIO4MiniAgent_o4-mini - INFO - Making API request to O4 Mini (attempt 1/3) with 90s timeout...
+2025-08-21 04:16:17,505 - OpenAIO4MiniAgent_o4-mini - INFO - API request successful
+2025-08-21 04:16:26,618 - OpenAIO4MiniAgent_o4-mini - INFO - Making API call to https://api.openai.com/v1/chat/completions
+2025-08-21 04:16:26,618 - OpenAIO4MiniAgent_o4-mini - INFO - Using timeout of 90s for O4 Mini with reasoning effort: low
+2025-08-21 04:16:26,618 - OpenAIO4MiniAgent_o4-mini - INFO - Making API request to O4 Mini (attempt 1/3) with 90s timeout...
+2025-08-21 04:16:27,846 - OpenAIO4MiniAgent_o4-mini - INFO - API request successful
+2025-08-21 04:16:42,704 - OpenAIO4MiniAgent_o4-mini - INFO - Making API call to https://api.openai.com/v1/chat/completions
+2025-08-21 04:16:42,704 - OpenAIO4MiniAgent_o4-mini - INFO - Using timeout of 90s for O4 Mini with reasoning effort: low
+2025-08-21 04:16:42,704 - OpenAIO4MiniAgent_o4-mini - INFO - Making API request to O4 Mini (attempt 1/3) with 90s timeout...
+2025-08-21 04:16:45,561 - OpenAIO4MiniAgent_o4-mini - INFO - API request successful
+2025-08-21 04:16:57,338 - OpenAIO4MiniAgent_o4-mini - INFO - Making API call to https://api.openai.com/v1/chat/completions
+2025-08-21 04:16:57,338 - OpenAIO4MiniAgent_o4-mini - INFO - Using timeout of 90s for O4 Mini with reasoning effort: low
+2025-08-21 04:16:57,338 - OpenAIO4MiniAgent_o4-mini - INFO - Making API request to O4 Mini (attempt 1/3) with 90s timeout...
+2025-08-21 04:16:58,377 - OpenAIO4MiniAgent_o4-mini - INFO - API request successful
+2025-08-21 04:17:03,766 - OpenAIO4MiniAgent_o4-mini - INFO - Exported conversation to agents/o4-mini/exports/conversation_20250821_041703.html
+2025-08-21 04:17:08,255 - OpenAIO4MiniAgent_o4-mini - INFO - Exported conversation to agents/o4-mini/exports/conversation_20250821_041708.md

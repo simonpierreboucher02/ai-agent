@@ -1,0 +1,14 @@
+[
+  {
+    "role": "user",
+    "content": "hi",
+    "timestamp": "2025-08-21T04:11:35.261348",
+    "metadata": {}
+  },
+  {
+    "role": "assistant",
+    "content": "Hi there! How can I help you today?",
+    "timestamp": "2025-08-21T04:11:36.931022",
+    "metadata": {}
+  }
+]
